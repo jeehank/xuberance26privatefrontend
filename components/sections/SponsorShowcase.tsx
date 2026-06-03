@@ -113,7 +113,8 @@ function SponsorCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.6, delay: index * 0.08 }}
-      className="flex flex-col items-center gap-2 md:gap-4 group min-w-0 flex-shrink"
+      className="flex flex-col items-center gap-2 md:gap-4 group min-w-0 flex-1"
+      style={{ maxWidth: tier.logoSize + 50 }}
     >
       {/* Logo Container */}
       <div
