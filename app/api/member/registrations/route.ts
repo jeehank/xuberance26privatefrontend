@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase";
+import { supabaseAdmin } from "@/lib/supabase";
 import { getSession } from "@/lib/session";
 import { rateLimit } from "@/lib/rate-limit";
 
@@ -11,7 +11,7 @@ export async function GET() {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const { data: registrations, error } = await supabase
+    const { data: registrations, error } = await supabaseAdmin
       .from("registrations")
       .select("id, event_title, participants, created_at")
       .eq("member_id", session.id)
@@ -75,7 +75,7 @@ export async function POST(req: NextRequest) {
     }
 
     // 1. Delete previous registration if it exists, to replace it
-    const { error: deleteError } = await supabase
+    const { error: deleteError } = await supabaseAdmin
       .from("registrations")
       .delete()
       .eq("member_id", session.id)
@@ -90,7 +90,7 @@ export async function POST(req: NextRequest) {
     }
 
     // 2. Insert new registration
-    const { data: newReg, error: insertError } = await supabase
+    const { data: newReg, error: insertError } = await supabaseAdmin
       .from("registrations")
       .insert({
         member_id: session.id,
@@ -136,7 +136,7 @@ export async function DELETE(req: NextRequest) {
       );
     }
 
-    const { error } = await supabase
+    const { error } = await supabaseAdmin
       .from("registrations")
       .delete()
       .eq("member_id", session.id)

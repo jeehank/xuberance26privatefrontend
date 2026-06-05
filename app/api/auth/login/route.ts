@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase";
+import { supabaseAdmin } from "@/lib/supabase";
 import { setSession } from "@/lib/session";
 import { rateLimit } from "@/lib/rate-limit";
 import bcrypt from "bcryptjs";
@@ -28,7 +28,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Query database for the account
-    const { data: account, error } = await supabase
+    const { data: account, error } = await supabaseAdmin
       .from("accounts")
       .select("*")
       .eq("username", username)

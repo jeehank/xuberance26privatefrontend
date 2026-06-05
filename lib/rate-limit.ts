@@ -1,4 +1,4 @@
-import { supabase } from "./supabase";
+import { supabaseAdmin } from "./supabase";
 
 interface RateLimitResult {
   success: boolean;
@@ -21,13 +21,13 @@ export async function rateLimit(
     const now = new Date();
     
     // 1. Clean up expired rate limits
-    await supabase
+    await supabaseAdmin
       .from("rate_limits")
       .delete()
       .lt("expiry", now.toISOString());
 
     // 2. Look up the key
-    const { data: record, error } = await supabase
+    const { data: record, error } = await supabaseAdmin
       .from("rate_limits")
       .select("*")
       .eq("key", key)
@@ -41,7 +41,7 @@ export async function rateLimit(
     if (!record) {
       // 3. Insert new rate limit entry
       const expiry = new Date(Date.now() + windowMs);
-      const { error: insertError } = await supabase
+      const { error: insertError } = await supabaseAdmin
         .from("rate_limits")
         .insert({
           key,
@@ -60,7 +60,7 @@ export async function rateLimit(
       return { success: false, limit: maxHits, remaining: 0 };
     }
 
-    const { error: updateError } = await supabase
+    const { error: updateError } = await supabaseAdmin
       .from("rate_limits")
       .update({ hits: record.hits + 1 })
       .eq("key", key);

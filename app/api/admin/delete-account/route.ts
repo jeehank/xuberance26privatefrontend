@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase";
+import { supabaseAdmin } from "@/lib/supabase";
 import { getSession } from "@/lib/session";
 
 export async function POST(req: NextRequest) {
@@ -28,7 +28,7 @@ export async function POST(req: NextRequest) {
     }
 
     // 3. Delete account (will cascade to registrations)
-    const { error } = await supabase
+    const { error } = await supabaseAdmin
       .from("accounts")
       .delete()
       .eq("id", accountId)

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase";
+import { supabaseAdmin } from "@/lib/supabase";
 import { getSession } from "@/lib/session";
 
 export async function GET(req: NextRequest) {
@@ -19,7 +19,7 @@ export async function GET(req: NextRequest) {
       );
     }
 
-    const { data: registrations, error } = await supabase
+    const { data: registrations, error } = await supabaseAdmin
       .from("registrations")
       .select("id, event_title, participants, created_at")
       .eq("member_id", memberId)

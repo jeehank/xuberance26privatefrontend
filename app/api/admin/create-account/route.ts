@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase";
+import { supabaseAdmin } from "@/lib/supabase";
 import { getSession } from "@/lib/session";
 import bcrypt from "bcryptjs";
 
@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
     const passwordHash = bcrypt.hashSync(password, salt);
 
     // 3. Save member account to DB
-    const { data, error } = await supabase
+    const { data, error } = await supabaseAdmin
       .from("accounts")
       .insert({
         username: trimmedUsername,
