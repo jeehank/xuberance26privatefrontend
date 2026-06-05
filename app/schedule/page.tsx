@@ -164,7 +164,7 @@ export default function SchedulePage() {
                         <div className="flex flex-col items-center" style={{ transform: "skewX(15deg)" }}>
                           <h2 style={{ transform: "none" }}>{item.event}</h2>
                           {item.subtitle && (
-                            <span className="font-mono-custom text-xs md:text-sm text-cyan-400/70 tracking-wider mt-1">
+                            <span className="font-mono-custom text-xs md:text-sm text-cyan-400/70 tracking-wider -mt-1">
                               {item.subtitle}
                             </span>
                           )}
@@ -212,7 +212,7 @@ export default function SchedulePage() {
                       {item.event}
                     </h3>
                     {item.subtitle && (
-                      <p className="font-mono-custom text-xs text-cyan-400/70 tracking-wider pl-2 -mt-1">
+                      <p className="font-mono-custom text-xs text-cyan-400/70 tracking-wider pl-2 -mt-2">
                         {item.subtitle}
                       </p>
                     )}
