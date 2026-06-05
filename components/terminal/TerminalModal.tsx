@@ -33,7 +33,6 @@ export default function TerminalModal() {
     "[INFO] WELCOME PROTOCOL SENT TO REGISTERED MAILBOX."
   ];
 
-  // Prevent scroll propagation when modal is open
   useEffect(() => {
     if (isTerminalOpen) {
       document.body.style.overflow = "hidden";
@@ -45,7 +44,6 @@ export default function TerminalModal() {
     };
   }, [isTerminalOpen]);
 
-  // Handle mock log sequence during submission
   useEffect(() => {
     if (!submitting) return;
 
@@ -58,7 +56,6 @@ export default function TerminalModal() {
     } else {
       const timer = setTimeout(() => {
         setSubmitSuccess(true);
-        // Trigger confetti explosion
         confetti({
           particleCount: 100,
           spread: 70,
@@ -90,7 +87,6 @@ export default function TerminalModal() {
   return (
     <AnimatePresence>
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-        {/* Backdrop Blur */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -99,7 +95,6 @@ export default function TerminalModal() {
           className="absolute inset-0 bg-slate-950/80 backdrop-blur-md"
         />
 
-        {/* Modal Panel */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -107,12 +102,9 @@ export default function TerminalModal() {
           transition={{ type: "spring", damping: 25, stiffness: 220 }}
           className="glass-card w-full max-w-lg rounded-2xl overflow-hidden relative z-10 shadow-[0_20px_50px_rgba(0,242,254,0.15)] border border-cyan-400/30"
         >
-          {/* Header */}
           <TerminalHeader />
 
-          {/* Terminal Workspace */}
           <div className="p-6 bg-slate-950/90 font-mono-custom text-xs md:text-sm text-cyan-400 min-h-[380px] flex flex-col justify-between">
-            {/* Boot Diagnostics Display */}
             <div className="space-y-1.5 min-h-[110px] text-cyan-400/80">
               {displayedLines.map((line, idx) => (
                 <div key={idx} className="flex items-start">
@@ -125,7 +117,6 @@ export default function TerminalModal() {
               )}
             </div>
 
-            {/* Middle Container: Dynamic state changes (booting, typing form, uploading, success) */}
             <div className="flex-1 flex flex-col justify-center my-6">
               <AnimatePresence mode="wait">
                 {bootCompleted && !submitting && (
@@ -139,7 +130,6 @@ export default function TerminalModal() {
                     <div className="text-cyan-300 font-bold uppercase tracking-wider mb-2 border-b border-cyan-500/10 pb-1">
                       // INPUT TELEMETRY DATA
                     </div>
-                    {/* Name Input */}
                     <div className="flex flex-col space-y-1.5">
                       <label className="text-[10px] text-cyan-500/60 uppercase tracking-widest">
                         PILOT NAME
@@ -154,7 +144,6 @@ export default function TerminalModal() {
                       />
                     </div>
 
-                    {/* Email Input */}
                     <div className="flex flex-col space-y-1.5">
                       <label className="text-[10px] text-cyan-500/60 uppercase tracking-widest">
                         PILOT SIGNAL (EMAIL)
@@ -169,7 +158,6 @@ export default function TerminalModal() {
                       />
                     </div>
 
-                    {/* Track Dropdown */}
                     <div className="flex flex-col space-y-1.5">
                       <label className="text-[10px] text-cyan-500/60 uppercase tracking-widest">
                         MISSION SECTOR (TRACK)
@@ -185,7 +173,6 @@ export default function TerminalModal() {
                       </select>
                     </div>
 
-                    {/* Submit Button */}
                     <button
                       type="submit"
                       className="w-full py-2.5 rounded border-2 border-[#0dffd6] hover:bg-[#0dffd6]/10 font-bold uppercase tracking-widest text-[#0dffd6] transition-colors focus:outline-none cursor-pointer"
@@ -247,7 +234,6 @@ export default function TerminalModal() {
               </AnimatePresence>
             </div>
 
-            {/* Shell footer status indicators */}
             <div className="flex items-center justify-between border-t border-cyan-500/10 pt-4 font-mono-custom text-[8px] text-cyan-500/40 select-none">
               <span>CRYPTO_MODE: ON // AES_256</span>
               <span>BUFFER_SIG: {submitting ? "UPLOADING" : "STABLE"}</span>

@@ -14,7 +14,6 @@ export default function FloatingParticles() {
     const noise = new Float32Array(count * 3);
 
     for (let i = 0; i < count; i++) {
-      // Spread particles across a wide 3D space
       pos[i * 3] = (Math.random() - 0.5) * 40;
       pos[i * 3 + 1] = (Math.random() - 0.5) * 40;
       pos[i * 3 + 2] = (Math.random() - 0.5) * 40;
@@ -38,19 +37,16 @@ export default function FloatingParticles() {
     for (let i = 0; i < count; i++) {
       const idx = i * 3;
       
-      // Floating motion: float upwards slowly
       posAttribute.setY(
         idx,
         posAttribute.getY(idx) + speeds[i] * 0.1
       );
 
-      // Apply horizontal drift (currents) using sine/cosine waves
       posAttribute.setX(
         idx,
         posAttribute.getX(idx) + Math.sin(time * 0.2 + noiseOffsets[idx]) * 0.005
       );
 
-      // Reset position if it floats too high
       if (posAttribute.getY(idx) > 20) {
         posAttribute.setY(idx, -20);
         posAttribute.setX(idx, (Math.random() - 0.5) * 40);

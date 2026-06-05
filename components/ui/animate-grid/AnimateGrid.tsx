@@ -35,7 +35,6 @@ export default function AnimateGrid({
   const getAdjacentIndices = (activeIdx: number) => {
     return [activeIdx - 1, activeIdx + 1, activeIdx - 4, activeIdx + 4].filter((idx) => {
       if (idx < 0 || idx >= cards.length) return false;
-      // Exclude wrapping columns
       if (activeIdx % 4 === 0 && idx === activeIdx - 1) return false;
       if (activeIdx % 4 === 3 && idx === activeIdx + 1) return false;
       return true;

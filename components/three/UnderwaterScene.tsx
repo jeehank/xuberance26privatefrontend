@@ -13,7 +13,6 @@ function VolumetricLights() {
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
     
-    // Simulate caustics with moving spotlights
     if (light1Ref.current) {
       light1Ref.current.position.x = Math.sin(time * 0.5) * 10;
       light1Ref.current.position.z = Math.cos(time * 0.3) * 5;
@@ -60,7 +59,6 @@ export default function UnderwaterScene() {
         camera={{ position: [0, 0, 10], fov: 60 }}
         gl={{ antialias: true, alpha: true }}
         onCreated={({ gl, scene }) => {
-          // Fog matching deep-water depth
           scene.fog = new THREE.FogExp2("#071224", 0.03);
         }}
       >

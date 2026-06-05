@@ -8,7 +8,6 @@ export default function TerminalHeader() {
 
   return (
     <div className="flex items-center justify-between px-4 py-3 bg-slate-950/80 border-b border-cyan-500/20 select-none">
-      {/* OS window action dots */}
       <div className="flex items-center space-x-2">
         <span className="w-3 h-3 rounded-full bg-[#ff5f56] opacity-80" />
         <span className="w-3 h-3 rounded-full bg-[#ffbd2e] opacity-80" />
@@ -18,12 +17,10 @@ export default function TerminalHeader() {
         />
       </div>
 
-      {/* Terminal Title */}
       <div className="font-mono-custom text-[10px] md:text-xs text-cyan-400 font-bold tracking-widest uppercase">
         abyssal-shell v1.0.4 // REGISTRY
       </div>
 
-      {/* System coordinates & stats / close action */}
       <div className="flex items-center space-x-4">
         <span className="hidden sm:inline font-mono-custom text-[9px] text-cyan-500/50 uppercase tracking-wider">
           LAT: 11.3733° N | LGT: 142.1996° E

@@ -37,7 +37,6 @@ export default function LiquidLogo({
   const cleanUpTextureRef = useRef<(() => void) | undefined>(undefined);
   const imageDataRef = useRef<ImageData | null>(null);
 
-  // Helper to update uniforms
   const updateUniforms = () => {
     const gl = glRef.current;
     const uniforms = uniformsRef.current;
@@ -50,7 +49,6 @@ export default function LiquidLogo({
     gl.uniform1f(uniforms.u_liquid, liquid);
   };
 
-  // Resize canvas function
   const resizeCanvas = () => {
     const canvasEl = canvasRef.current;
     const gl = glRef.current;
@@ -70,14 +68,12 @@ export default function LiquidLogo({
     gl.uniform1f(uniforms.u_img_ratio, imgRatio);
   };
 
-  // Clean texture function
   const cleanTexture = () => {
     const gl = glRef.current;
     const uniforms = uniformsRef.current;
     const imgData = imageDataRef.current;
     if (!gl || !uniforms || !imgData) return;
 
-    // Delete any existing texture first
     const existingTexture = gl.getParameter(gl.TEXTURE_BINDING_2D);
     if (existingTexture) {
       gl.deleteTexture(existingTexture);
@@ -87,13 +83,11 @@ export default function LiquidLogo({
     gl.activeTexture(gl.TEXTURE0);
     gl.bindTexture(gl.TEXTURE_2D, imageTexture);
 
-    // Set texture parameters before uploading the data
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
 
-    // Ensure power-of-two dimensions or use appropriate texture parameters
     gl.pixelStorei(gl.UNPACK_ALIGNMENT, 1);
 
     try {
@@ -131,7 +125,6 @@ export default function LiquidLogo({
         if (!active) return;
         imageDataRef.current = imgData;
 
-        // Initialize Shader
         const canvas = canvasRef.current;
         if (!canvas) return;
         const gl = canvas.getContext("webgl2", {
@@ -189,7 +182,6 @@ export default function LiquidLogo({
 
         uniformsRef.current = getUniforms(program, gl);
 
-        // Vertex position
         const vertices = new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]);
         const vertexBuffer = gl.createBuffer();
         gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
@@ -204,7 +196,6 @@ export default function LiquidLogo({
 
         glRef.current = gl;
 
-        // Update uniforms
         gl.uniform1f(uniformsRef.current.u_edge, edge);
         gl.uniform1f(uniformsRef.current.u_patternBlur, patternBlur);
         gl.uniform1f(uniformsRef.current.u_time, 0);
@@ -212,7 +203,6 @@ export default function LiquidLogo({
         gl.uniform1f(uniformsRef.current.u_refraction, refraction);
         gl.uniform1f(uniformsRef.current.u_liquid, liquid);
 
-        // Clean up old texture
         if (cleanUpTextureRef.current) {
           cleanUpTextureRef.current();
         }
@@ -223,7 +213,6 @@ export default function LiquidLogo({
         resizeCanvas();
         window.addEventListener("resize", resizeCanvas);
 
-        // Render loop
         lastRenderTimeRef.current = performance.now();
 
         const renderLoop = (currentTime: number) => {
@@ -258,7 +247,6 @@ export default function LiquidLogo({
     };
   }, [imageUrl]);
 
-  // Keep uniforms in sync with props changes
   useEffect(() => {
     updateUniforms();
   }, [edge, patternBlur, patternScale, refraction, liquid, speed]);
