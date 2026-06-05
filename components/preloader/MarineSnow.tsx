@@ -40,7 +40,6 @@ export default function MarineSnow() {
       };
     };
 
-    // Initialize particles
     for (let i = 0; i < 150; i++) {
       particles.push(createParticle(true));
     }
@@ -61,7 +60,6 @@ export default function MarineSnow() {
         p.y += p.speedY;
         p.x += p.speedX + Math.sin(p.y * p.frequency) * 0.05 * p.amplitude;
 
-        // Reset particle if it leaves the top or sides
         if (p.y < -10 || p.x < -10 || p.x > width + 10) {
           particles[i] = createParticle(false);
         }
@@ -74,7 +72,6 @@ export default function MarineSnow() {
         ctx.fill();
       }
 
-      // Reset shadow blur for other drawings
       ctx.shadowBlur = 0;
 
       animationId = requestAnimationFrame(render);

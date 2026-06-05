@@ -57,7 +57,6 @@ export default function Navbar() {
           }`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-8 flex items-center justify-between">
-          {/* Left: Logo */}
           <div className="flex items-center">
             <Link
               href="/#hero"
@@ -68,7 +67,6 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Center: NavLinks */}
           <nav className="hidden md:flex items-center space-x-2 bg-cyan-950/20 px-2 py-1.5 rounded-full border border-cyan-500/10 backdrop-blur-md">
             {navItems.map((item) => (
               <Link
@@ -84,13 +82,11 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* Right: Liquid Button / Mobile Toggle */}
           <div className="flex items-center space-x-4">
             <div className="hidden lg:block">
               <LiquidButton />
             </div>
 
-            {/* Mobile menu trigger */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="md:hidden p-2 rounded-md text-cyan-400 hover:text-cyan-200 focus:outline-none hover:bg-cyan-950/20 border border-transparent hover:border-cyan-500/20 transition-all cursor-pointer"
@@ -100,14 +96,12 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Depth water bar below the navigation row (only on home page) */}
         {pathname === "/" && (
           <div className="w-full mt-3">
             <DepthWaterBar />
           </div>
         )}
 
-        {/* Mobile Menu Overlay */}
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div
@@ -117,7 +111,6 @@ export default function Navbar() {
               transition={{ duration: 0.3 }}
               className="absolute top-full inset-x-0 z-30 md:hidden bg-slate-950/95 border-b border-cyan-500/25 backdrop-blur-2xl shadow-[0_20px_40px_rgba(0,0,0,0.8)] px-6 py-8 flex flex-col space-y-6"
             >
-              {/* Depth Counter removed - now visible at the bottom of the sticky header */}
               <nav className="flex flex-col space-y-4 items-center">
                 {navItems.map((item) => (
                   <Link

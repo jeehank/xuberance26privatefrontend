@@ -49,18 +49,15 @@ export default function LiquidWrapper({
       onMouseLeave={() => setIsHovered(false)}
       className={`relative overflow-hidden transition-all duration-500 cursor-pointer group ${className}`}
     >
-      {/* Content Label */}
       <span className="relative z-10 block pointer-events-none transition-colors duration-500 w-full text-center">
         {children}
       </span>
 
-      {/* Rising Liquid Background */}
       <div
         className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 z-0 transition-transform duration-500 ease-out origin-bottom scale-y-0 group-hover:scale-y-100"
         style={{ borderRadius: "inherit" }}
       />
 
-      {/* Floating Bubbles */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         {Array.from({ length: 6 }).map((_, i) => (
           <motion.span

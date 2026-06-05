@@ -13,10 +13,10 @@ export default function BubbleBurst({ active }: BubbleBurstProps) {
   const bubbles = useMemo(() => {
     return Array.from({ length: bubbleCount }).map((_, i) => {
       const angle = Math.random() * Math.PI * 2;
-      const distance = 100 + Math.random() * 250; // Distance to expand outwards
+      const distance = 100 + Math.random() * 250;
       const x = Math.cos(angle) * distance;
       const y = Math.sin(angle) * distance;
-      const size = 6 + Math.random() * 18; // Bubble diameter
+      const size = 6 + Math.random() * 18;
       const duration = 0.8 + Math.random() * 0.8;
       const delay = Math.random() * 0.15;
 
