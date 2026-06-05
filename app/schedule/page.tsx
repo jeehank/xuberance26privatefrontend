@@ -16,14 +16,14 @@ interface ScheduleItem {
 
 const day1Schedule: ScheduleItem[] = [
   { event: "Registration", venue: "Front desk", time: "7:30 AM" },
-  { event: "OPENING CEREMONY", venue: "Stage", time: "9:00 AM" },
+  { event: "OPENING CEREMONY", venue: "Primary Section Stage", time: "9:00 AM" },
   { event: "X-PULL", subtitle: "Tug Of War (Boys)", venue: "Senior School Main field", time: "11:00 AM" },
   { event: "X-SCRIPT", subtitle: "Creative Writing", venue: "Reading room", time: "11:00 AM" },
   { event: "X-RAPPORTEUR", subtitle: "Vlogging & Journalism", venue: "School campus", time: "10:30 AM" },
   { event: "X-FIFA", subtitle: "Fifa", venue: "Fr. Bruylants Hall", time: "10:30 AM" },
   { event: "X-TORKOBITOROKO", subtitle: "Bengali Debate", venue: "Fr. Bruylants Hall", time: "3:00 PM" },
   { event: "X-SPRAY", subtitle: "Spray Painting", venue: "Primary School Gymnasium", time: "11:00 AM" },
-  { event: "X-ACOUSTIC", subtitle: "Western Music", venue: "Stage", time: "4:00 PM" },
+  { event: "X-ACOUSTIC", subtitle: "Western Music", venue: "Primary Section Stage", time: "4:00 PM" },
   { event: "X-PROSHNOTTOR", subtitle: "Bengali Quiz", venue: "Fr. Sassel Hall", time: "11:00 AM" },
   { event: "X-AVRITTI", subtitle: "Hindi Elocution", venue: "Fr. Sassel Hall", time: "2:00 PM" },
   { event: "X-PONG", subtitle: "Table Tennis (Boys & Girls)", venue: "Games room", time: "10:30 AM" },
@@ -45,9 +45,9 @@ const day2Schedule: ScheduleItem[] = [
   { event: "X-PRESS", subtitle: "Poster Making", venue: "Big Parlour", time: "1:00 PM" },
   { event: "X-CALIBRE", subtitle: "Debate (POOL2)", venue: "Fr. Bruylants Hall", time: "8:30 AM" },
   { event: "X-60", subtitle: "One Minute to Fame", venue: "Fr. Bruylants Hall", time: "12:00 PM" },
-  { event: "X-ACT", subtitle: "Ad Spoof", venue: "Stage", time: "8:30 AM" },
-  { event: "X-RAGA", subtitle: "Eastern Music", venue: "Stage", time: "12:00 PM" },
-  { event: "X-TRAVAGANCE", subtitle: "Western Dance", venue: "Stage", time: "4:00 PM" },
+  { event: "X-ACT", subtitle: "Ad Spoof", venue: "Primary Section Stage", time: "8:30 AM" },
+  { event: "X-RAGA", subtitle: "Eastern Music", venue: "Primary Section Stage", time: "12:00 PM" },
+  { event: "X-TRAVAGANCE", subtitle: "Western Dance", venue: "Primary Section Stage", time: "4:00 PM" },
   { event: "X-CALIBRE", subtitle: "Debate (POOL1)", venue: "Fr. Sassel Hall", time: "8:30 AM" },
   { event: "X-QUIZITE", subtitle: "Quiz", venue: "Fr. Sassel Hall", time: "12:30 PM" },
   { event: "X-HOOP", subtitle: "Basketball (Girls & Boys)", venue: "Basketball Court", time: "8:30 AM" },
@@ -65,7 +65,7 @@ const day3Schedule: ScheduleItem[] = [
   { event: "X-WICKET", subtitle: "Cricket", venue: "Senior School Main Field", time: "8:30 AM" },
   { event: "X-KHO", subtitle: "Kho Kho (Girls)", venue: "Senior School Back Field", time: "8:30 AM" },
   { event: "X-HOP", subtitle: "Dance Face Off", venue: "Primary School Gymnasium", time: "8:30 AM" },
-  { event: "X-NATAK", subtitle: "Stage Play", venue: "Stage", time: "11:00 AM" },
+  { event: "X-NATAK", subtitle: "Stage Play", venue: "Primary Section Stage", time: "11:00 AM" },
   { event: "X-DIGI", subtitle: "Digital Art", venue: "Art room", time: "8:30 AM" },
   { event: "X-RAPPORTEUR", subtitle: "Vlogging & Journalism", venue: "Reading Room", time: "10:00 AM" },
   { event: "X-KOBITA", subtitle: "Bengali poem", venue: "Fr. Bruylants Hall", time: "8:30 AM" },
@@ -164,7 +164,7 @@ export default function SchedulePage() {
                         <div className="flex flex-col items-center" style={{ transform: "skewX(15deg)" }}>
                           <h2 style={{ transform: "none" }}>{item.event}</h2>
                           {item.subtitle && (
-                            <span style={{ fontFamily: "var(--font-seaweed), cursive", fontSize: "0.65rem", color: "#67e8f9", letterSpacing: "0.05em", marginTop: "2px" }}>
+                            <span className="font-mono-custom text-xs md:text-sm text-cyan-400/70 tracking-wider mt-1">
                               {item.subtitle}
                             </span>
                           )}
@@ -212,7 +212,7 @@ export default function SchedulePage() {
                       {item.event}
                     </h3>
                     {item.subtitle && (
-                      <p className="font-seaweed text-xs text-cyan-300 pl-2 -mt-1">
+                      <p className="font-mono-custom text-xs text-cyan-400/70 tracking-wider pl-2 -mt-1">
                         {item.subtitle}
                       </p>
                     )}
