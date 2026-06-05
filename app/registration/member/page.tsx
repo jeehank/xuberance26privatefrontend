@@ -65,6 +65,7 @@ export default function MemberDashboardPage() {
   const handleLogout = async () => {
     try {
       await fetch("/api/auth/logout", { method: "POST" });
+      window.dispatchEvent(new Event("session-change"));
       router.push("/registration");
     } catch (e) {
       console.error("Logout failed:", e);

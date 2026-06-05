@@ -56,6 +56,9 @@ export default function RegistrationPage() {
         return;
       }
 
+      // Dispatch session change event for header reactivity
+      window.dispatchEvent(new Event("session-change"));
+
       // Check role and redirect
       if (data.role === "admin") {
         router.push("/registration/admin");

@@ -7,6 +7,7 @@ import Preloader from "@/components/preloader/Preloader";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { LogOut, UserPlus, FileText, Trash2, Download } from "lucide-react";
+import * as XLSX from "xlsx";
 
 interface Account {
   id: string;
@@ -74,6 +75,7 @@ export default function AdminPanelPage() {
   const handleLogout = async () => {
     try {
       await fetch("/api/auth/logout", { method: "POST" });
+      window.dispatchEvent(new Event("session-change"));
       router.push("/registration");
     } catch (e) {
       console.error("Logout failed:", e);
@@ -161,36 +163,40 @@ export default function AdminPanelPage() {
     }
   };
 
-  // Export registrations of respective school to Excel-compatible CSV file
-  const handleExportCSV = (schoolName: string, registrations: Registration[]) => {
+  // Export registrations of respective school to native Excel .xlsx file
+  const handleExportExcel = (schoolName: string, registrations: Registration[]) => {
     if (registrations.length === 0) {
       alert("No registrations available to export.");
       return;
     }
 
-    let csv = "\uFEFF"; // UTF-8 BOM so Excel opens it correctly
+    const rows: any[] = [];
 
     registrations.forEach((reg) => {
-      csv += `EVENT NAME: ${reg.event_title}\n`;
-      csv += "PARTICIPANT NAME,PARTICIPANT NUMBER,CLASS\n";
+      rows.push([`EVENT NAME: ${reg.event_title.toUpperCase()}`]);
+      rows.push(["PARTICIPANT NAME", "PARTICIPANT NUMBER", "CLASS"]);
       reg.participants.forEach((p) => {
-        const name = `"${(p.name || "").replace(/"/g, '""')}"`;
-        const number = `"${(p.number || "").replace(/"/g, '""')}"`;
-        const className = `"${(p.class || "").replace(/"/g, '""')}"`;
-        csv += `${name},${number},${className}\n`;
+        rows.push([
+          p.name.toUpperCase(),
+          p.number,
+          p.class.toUpperCase()
+        ]);
       });
-      csv += "\n"; // Blank line between events
+      rows.push([]); // blank separator
     });
 
-    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.setAttribute("href", url);
-    link.setAttribute("download", `${schoolName}_registrations.csv`);
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
+    const worksheet = XLSX.utils.aoa_to_sheet(rows);
+    
+    // Autowidth columns
+    worksheet["!cols"] = [
+      { wch: 30 },
+      { wch: 25 },
+      { wch: 15 }
+    ];
+
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Registrations");
+    XLSX.writeFile(workbook, `${schoolName}_registrations.xlsx`);
   };
 
   if (isLoading && accounts.length === 0) {
@@ -402,7 +408,7 @@ export default function AdminPanelPage() {
                         </div>
 
                         <button
-                          onClick={() => handleExportCSV(selectedAccount.username, selectedRegistrations)}
+                          onClick={() => handleExportExcel(selectedAccount.username, selectedRegistrations)}
                           className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-cyan-400 hover:bg-white text-slate-950 font-orbitron font-bold text-xs tracking-widest transition-all duration-300 cursor-pointer"
                         >
                           <Download size={13} />
