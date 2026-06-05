@@ -79,52 +79,52 @@ const coreCommittee = {
 const departmentHeads = [
   {
     dept: "Technical",
-    members: ["Justin Vineet Lakra", "Aritra Das", "Garvit Maheshwari"],
+    members: ["1.", "2."],
   },
   {
     dept: "School In Charge",
-    members: ["Priyesh Bhatter", "Krishnan Bajoria", "Aadi Mukherjee"],
+    members: ["1.", "2.", "3."],
   },
   {
     dept: "Management",
-    members: ["Lekhanshu Agarwal", "Ashish Singh", "Aneek Dutta"],
+    members: ["1.", "2.", "3."],
   },
   {
     dept: "Logistics",
-    members: ["Swayam Agarwal", "Ishaan Bhatter", "Shaurya Maloo", "Aarush Kajaria"],
+    members: ["1.", "2.", "3."],
   },
   {
     dept: "Hospitality",
-    members: ["Kusshal Sureka", "Alexander Gupta", "Pranshu Dokania", "Sabyasachi Mukherjee"],
+    members: ["1.", "2.", "3."],
   },
   {
     dept: "Security",
-    members: ["Dheer Metharamani", "Advik Choudhary", "Rachit Bhalotia"],
+    members: ["1.", "2.", "3."],
   },
   {
     dept: "Photography",
-    members: ["Shivaen Torcato", "Asmit Ghoshal"],
+    members: ["1.", "2.", "3."],
   },
   {
     dept: "Transport",
-    members: ["Nickunj Benani", "Naman Jain", "Abir Biswas"],
+    members: ["1.", "2.", "3."],
   },
   {
     dept: "Editorial",
-    members: ["Rohan Saha", "Rayan Bose"],
+    members: ["1.", "2.", "3."],
   },
   {
     dept: "Tech Team",
     members: [
-      "Justin Vineet Lakra",
-      "Jagrit Parakh",
-      "Garvit Maheshwari",
-      "Shaheer Shahaan",
-      "Aritra Das",
-      "Yash Mittal",
-      "Divij Jhunjhunwala",
-      "Ved Sureka",
-      "Agusteya Majumdar",
+      "1.",
+      "2.",
+      "3.",
+      "4.",
+      "5.",
+      "6.",
+      "7.",
+      "8.",
+      "9.",
     ],
   },
 ];
