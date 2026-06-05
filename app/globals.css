@@ -369,7 +369,7 @@
   max-width: 580px;
   position: relative;
   background-color: black;
-  height: 60px;
+  height: 80px;
   z-index: 10;
   border: 2px solid rgba(0, 242, 254, 0.4);
   box-shadow: 0 0 15px rgba(0, 242, 254, 0.15);
@@ -394,7 +394,7 @@
 
 .events h2 {
   font-family: var(--font-orbitron), sans-serif;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 900;
   letter-spacing: 0.1em;
   text-align: center;
@@ -407,21 +407,25 @@
   border: 2px solid white;
   border-image: linear-gradient(to right, #00f2fe, #0072ff) 1;
   position: absolute;
-  left: -80px;
+  left: -100px;
   top: 5px;
   transform: translateY(0);
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 20;
+  max-width: 140px;
 }
 
 .venue-block p {
-  padding: 4px 12px;
+  padding: 4px 10px;
   letter-spacing: 0.05em;
   font-family: var(--font-mono-custom), monospace;
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   text-align: center;
   transform: skewX(15deg);
   color: #00f2fe;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .time-block {

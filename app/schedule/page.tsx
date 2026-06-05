@@ -9,72 +9,73 @@ import { motion, AnimatePresence } from "framer-motion";
 
 interface ScheduleItem {
   event: string;
+  subtitle?: string;
   venue: string;
   time: string;
 }
 
 const day1Schedule: ScheduleItem[] = [
-  { event: "Registration", venue: "Front desk", time: "7:30 AM - 8:30 AM" },
-  { event: "OPENING CEREMONY", venue: "Fr. Depelchin Auditorium/Stage", time: "9:00 AM - 10:00 AM" },
-  { event: "X-PULL (Boys) (Tug Of War)", venue: "Senior School Main field", time: "11:00 AM - 4:00 PM" },
-  { event: "X-SCRIPT (Creative Writing)", venue: "Reading room<br/>Art Room", time: "11:00 AM - 2:00 PM" },
-  { event: "X-RAPPORTEUR (Vlogging & Journalism)", venue: "School campus", time: "10:30 AM - 6:00 PM" },
-  { event: "X-FIFA (Fifa)", venue: "Fr. Bruylants Hall", time: "10:30 AM - 2:30 PM" },
-  { event: "X-TORKOBITOROKO (Bengali Debate)", venue: "Fr. Bruylants Hall", time: "3:00 PM - 5:30 PM" },
-  { event: "X-SPRAY (Spray Painting)", venue: "Primary School Gymnasium", time: "11:00 AM - 1:30 PM" },
-  { event: "X-ACOUSTIC (Western Music)", venue: "Fr. Depelchin Auditorium/Stage", time: "4:00 PM - 6:30 PM" },
-  { event: "X-PROSHNOTTOR (Bengali Quiz)", venue: "Fr. Sassel Hall", time: "11:00 AM - 1:00 PM" },
-  { event: "X-AVRITTI (Hindi Elocution)", venue: "Fr. Sassel Hall", time: "2:00 PM - 3:30 PM" },
-  { event: "X-PONG (Boys & Girls) (Table Tennis)", venue: "Games room", time: "10:30 AM - 1:30 PM" },
-  { event: "X-HACK (Hackathon)", venue: "Computer lab", time: "10:30 AM - 3:30 PM" },
-  { event: "X-INNOVATE (Shark Tank)", venue: "Xavier Hall", time: "11:00 AM - 2:30 PM" },
-  { event: "X-PUZZLE (Puzzle Game)", venue: "Big Parlour", time: "10:30 AM - 12:30 PM" },
-  { event: "X-COOK (Fireless Cooking)", venue: "Big Parlour", time: "1:30 PM - 3:30 PM" },
-  { event: "X-KHO (Boys) (Kho-Kho)", venue: "Senior School Back field", time: "10:30 AM - 1:30 PM" },
+  { event: "Registration", venue: "Front desk", time: "7:30 AM" },
+  { event: "OPENING CEREMONY", venue: "Stage", time: "9:00 AM" },
+  { event: "X-PULL", subtitle: "Tug Of War (Boys)", venue: "Senior School Main field", time: "11:00 AM" },
+  { event: "X-SCRIPT", subtitle: "Creative Writing", venue: "Reading room", time: "11:00 AM" },
+  { event: "X-RAPPORTEUR", subtitle: "Vlogging & Journalism", venue: "School campus", time: "10:30 AM" },
+  { event: "X-FIFA", subtitle: "Fifa", venue: "Fr. Bruylants Hall", time: "10:30 AM" },
+  { event: "X-TORKOBITOROKO", subtitle: "Bengali Debate", venue: "Fr. Bruylants Hall", time: "3:00 PM" },
+  { event: "X-SPRAY", subtitle: "Spray Painting", venue: "Primary School Gymnasium", time: "11:00 AM" },
+  { event: "X-ACOUSTIC", subtitle: "Western Music", venue: "Stage", time: "4:00 PM" },
+  { event: "X-PROSHNOTTOR", subtitle: "Bengali Quiz", venue: "Fr. Sassel Hall", time: "11:00 AM" },
+  { event: "X-AVRITTI", subtitle: "Hindi Elocution", venue: "Fr. Sassel Hall", time: "2:00 PM" },
+  { event: "X-PONG", subtitle: "Table Tennis (Boys & Girls)", venue: "Games room", time: "10:30 AM" },
+  { event: "X-HACK", subtitle: "Hackathon", venue: "Computer lab", time: "10:30 AM" },
+  { event: "X-INNOVATE", subtitle: "Shark Tank", venue: "Xavier Hall", time: "11:00 AM" },
+  { event: "X-PUZZLE", subtitle: "Puzzle Game", venue: "Big Parlour", time: "10:30 AM" },
+  { event: "X-COOK", subtitle: "Fireless Cooking", venue: "Big Parlour", time: "1:30 PM" },
+  { event: "X-KHO", subtitle: "Kho-Kho (Boys)", venue: "Senior School Back field", time: "10:30 AM" },
 ];
 
 const day2Schedule: ScheduleItem[] = [
-  { event: "Registration", venue: "Front Desk", time: "7:30 AM - 8:00 AM" },
-  { event: "X-PAINTING (Sketching)", venue: "Art Room", time: "10:30 AM - 1:00 PM" },
-  { event: "X-GOAL (Boys) (Football)", venue: "Senior School Main Field", time: "8:30 AM - 1:30 PM" },
-  { event: "X-PULL (Girls) (Tug Of War)", venue: "Senior School Main Field", time: "2:00 PM - 4:00 PM" },
-  { event: "X-GOAL (Girls) (Football)", venue: "Senior School Back field", time: "9:00 AM - 1:00 PM" },
-  { event: "X-HACK (Hackathon)", venue: "Computer Lab", time: "8:30 AM - 4:00 PM" },
-  { event: "X-MATE (Chess)", venue: "Big Parlour", time: "9:00 AM - 11:00 AM" },
-  { event: "X-PRESS (Poster Making)", venue: "Big Parlour", time: "1:00 PM - 3:00 PM" },
-  { event: "X-CALIBRE (POOL2) (Debate)", venue: "Fr. Bruylants Hall", time: "8:30 AM - 11:30 AM" },
-  { event: "X-60 (One Minute to Fame)", venue: "Fr. Bruylants Hall", time: "12:00 PM - 2:30 PM" },
-  { event: "X-ACT (Ad Spoof)", venue: "Fr. Depelchin Auditorium/Stage", time: "8:30 AM - 11:30 AM" },
-  { event: "X-RAGA (Eastern Music)", venue: "Fr. Depelchin Auditorium/Stage", time: "12:00 PM - 2:30 PM" },
-  { event: "X-TRAVAGANCE (Western Dance)", venue: "Fr. Depelchin Auditorium/Stage", time: "4:00 PM - 6:30 PM" },
-  { event: "X-CALIBRE (POOL1) (Debate)", venue: "Fr. Sassel Hall", time: "8:30 AM - 11:30 AM" },
-  { event: "X-QUIZITE (Quiz)", venue: "Fr. Sassel Hall", time: "12:30 PM - 3:00 PM" },
-  { event: "X-HOOP (Girls & Boys) (Basketball)", venue: "Basketball Court", time: "8:30 AM - 3:00 PM" },
-  { event: "X-BID (Cricket Auction)", venue: "Reading Room", time: "8:30 AM - 2:00 PM" },
-  { event: "X-NEGOTIUM (Business Event)", venue: "Xavier Hall", time: "8:30 AM - 1:30 PM" },
-  { event: "X-GOLPO (Bengali Story telling)", venue: "Xavier Hall", time: "2:00 PM - 4:00 PM" },
-  { event: "X-RAPPORTEUR (Vlogging & Journalism)", venue: "School Campus", time: "8:30 AM - 6:00 PM" },
-  { event: "X-PIXEL (Photography)", venue: "School Campus<br/>Reading Room", time: "8:30 AM - 2:00 PM<br/>2:30 PM - 3:30 PM" },
-  { event: "X-HUNT (Treasure Hunt)", venue: "School Campus", time: "10:00 AM - 12:00 PM" },
+  { event: "Registration", venue: "Front Desk", time: "7:30 AM" },
+  { event: "X-PAINTING", subtitle: "Sketching", venue: "Art Room", time: "10:30 AM" },
+  { event: "X-GOAL", subtitle: "Football (Boys)", venue: "Senior School Main Field", time: "8:30 AM" },
+  { event: "X-PULL", subtitle: "Tug Of War (Girls)", venue: "Senior School Main Field", time: "2:00 PM" },
+  { event: "X-GOAL", subtitle: "Football (Girls)", venue: "Senior School Back field", time: "9:00 AM" },
+  { event: "X-HACK", subtitle: "Hackathon", venue: "Computer Lab", time: "8:30 AM" },
+  { event: "X-MATE", subtitle: "Chess", venue: "Big Parlour", time: "9:00 AM" },
+  { event: "X-PRESS", subtitle: "Poster Making", venue: "Big Parlour", time: "1:00 PM" },
+  { event: "X-CALIBRE", subtitle: "Debate (POOL2)", venue: "Fr. Bruylants Hall", time: "8:30 AM" },
+  { event: "X-60", subtitle: "One Minute to Fame", venue: "Fr. Bruylants Hall", time: "12:00 PM" },
+  { event: "X-ACT", subtitle: "Ad Spoof", venue: "Stage", time: "8:30 AM" },
+  { event: "X-RAGA", subtitle: "Eastern Music", venue: "Stage", time: "12:00 PM" },
+  { event: "X-TRAVAGANCE", subtitle: "Western Dance", venue: "Stage", time: "4:00 PM" },
+  { event: "X-CALIBRE", subtitle: "Debate (POOL1)", venue: "Fr. Sassel Hall", time: "8:30 AM" },
+  { event: "X-QUIZITE", subtitle: "Quiz", venue: "Fr. Sassel Hall", time: "12:30 PM" },
+  { event: "X-HOOP", subtitle: "Basketball (Girls & Boys)", venue: "Basketball Court", time: "8:30 AM" },
+  { event: "X-BID", subtitle: "Cricket Auction", venue: "Reading Room", time: "8:30 AM" },
+  { event: "X-NEGOTIUM", subtitle: "Business Event", venue: "Xavier Hall", time: "8:30 AM" },
+  { event: "X-GOLPO", subtitle: "Bengali Story telling", venue: "Xavier Hall", time: "2:00 PM" },
+  { event: "X-RAPPORTEUR", subtitle: "Vlogging & Journalism", venue: "School Campus", time: "8:30 AM" },
+  { event: "X-PIXEL", subtitle: "Photography", venue: "School Campus", time: "8:30 AM" },
+  { event: "X-HUNT", subtitle: "Treasure Hunt", venue: "School Campus", time: "10:00 AM" },
 ];
 
 const day3Schedule: ScheduleItem[] = [
-  { event: "Registration", venue: "Front Desk", time: "7:30 AM - 8:00 AM" },
-  { event: "X-HIBIT (Display of Science Models)", venue: "Physics Laboratory", time: "8:30 AM - 12:30 PM" },
-  { event: "X-WICKET (Cricket)", venue: "Senior School Main Field", time: "8:30 AM - 2:30 PM" },
-  { event: "X-KHO (Girls) (Kho Kho)", venue: "Senior School Back Field", time: "8:30 AM - 12:30 PM" },
-  { event: "X-HOP (Dance Face Off)", venue: "Primary School Gymnasium", time: "8:30 AM - 10:30 AM" },
-  { event: "X-NATAK (Stage Play)", venue: "Stage", time: "11:00 AM - 2:00 PM" },
-  { event: "X-DIGI (Digital Art)", venue: "Art room", time: "8:30 AM - 12:00 PM" },
-  { event: "X-RAPPORTEUR (Vlogging & Journalism)", venue: "Reading Room", time: "10:00 AM - 12:00 PM" },
-  { event: "X-KOBITA (Bengali poem)", venue: "Fr. Bruylants Hall", time: "8:30 AM - 12:30 PM" },
-  { event: "X-ALAAP (Hindi Antakshari)", venue: "Xavier Hall", time: "8:30 AM - 10:30 AM" },
-  { event: "X-CHOLOCHITRO (Bengali Short Film)", venue: "Xavier Hall", time: "11:00 AM - 2:00 PM" },
-  { event: "X-KALA (Eastern Dance)", venue: "Fr. Depelchin Auditorium", time: "8:30 AM - 11:30 AM" },
-  { event: "X-VIBRANCE (Ethnic Display)", venue: "Fr. Depelchin Auditorium", time: "12:00 PM - 2:00 PM" },
-  { event: "X-TEMPORE (Extempore)", venue: "Fr. Sassel Hall", time: "8:30 AM - 10:30 AM" },
-  { event: "X-CALIBRE (Final) (Debate)", venue: "Fr. Sassel Hall", time: "11:30 AM - 1:30 PM" },
-  { event: "CLOSING CEREMONY", venue: "Fr. Depelchin Auditorium", time: "3:30 PM - 6:00 PM" },
+  { event: "Registration", venue: "Front Desk", time: "7:30 AM" },
+  { event: "X-HIBIT", subtitle: "Display of Science Models", venue: "Physics Laboratory", time: "8:30 AM" },
+  { event: "X-WICKET", subtitle: "Cricket", venue: "Senior School Main Field", time: "8:30 AM" },
+  { event: "X-KHO", subtitle: "Kho Kho (Girls)", venue: "Senior School Back Field", time: "8:30 AM" },
+  { event: "X-HOP", subtitle: "Dance Face Off", venue: "Primary School Gymnasium", time: "8:30 AM" },
+  { event: "X-NATAK", subtitle: "Stage Play", venue: "Stage", time: "11:00 AM" },
+  { event: "X-DIGI", subtitle: "Digital Art", venue: "Art room", time: "8:30 AM" },
+  { event: "X-RAPPORTEUR", subtitle: "Vlogging & Journalism", venue: "Reading Room", time: "10:00 AM" },
+  { event: "X-KOBITA", subtitle: "Bengali poem", venue: "Fr. Bruylants Hall", time: "8:30 AM" },
+  { event: "X-ALAAP", subtitle: "Hindi Antakshari", venue: "Xavier Hall", time: "8:30 AM" },
+  { event: "X-CHOLOCHITRO", subtitle: "Bengali Short Film", venue: "Xavier Hall", time: "11:00 AM" },
+  { event: "X-KALA", subtitle: "Eastern Dance", venue: "Fr. Depelchin Auditorium", time: "8:30 AM" },
+  { event: "X-VIBRANCE", subtitle: "Ethnic Display", venue: "Fr. Depelchin Auditorium", time: "12:00 PM" },
+  { event: "X-TEMPORE", subtitle: "Extempore", venue: "Fr. Sassel Hall", time: "8:30 AM" },
+  { event: "X-CALIBRE", subtitle: "Debate (Final)", venue: "Fr. Sassel Hall", time: "11:30 AM" },
+  { event: "CLOSING CEREMONY", venue: "Fr. Depelchin Auditorium", time: "3:30 PM" },
 ];
 
 export default function SchedulePage() {
@@ -159,12 +160,19 @@ export default function SchedulePage() {
                           <p dangerouslySetInnerHTML={{ __html: item.venue }} />
                         </div>
 
-                        {/* Event Name */}
-                        <h2>{item.event}</h2>
+                        {/* Event Name + Subtitle */}
+                        <div className="flex flex-col items-center" style={{ transform: "skewX(15deg)" }}>
+                          <h2 style={{ transform: "none" }}>{item.event}</h2>
+                          {item.subtitle && (
+                            <span style={{ fontFamily: "var(--font-seaweed), cursive", fontSize: "0.65rem", color: "#67e8f9", letterSpacing: "0.05em", marginTop: "2px" }}>
+                              {item.subtitle}
+                            </span>
+                          )}
+                        </div>
 
                         {/* Time label - slides down on hover */}
                         <div className="time-block">
-                          <p dangerouslySetInnerHTML={{ __html: item.time }} />
+                          <p>{item.time}</p>
                         </div>
                       </div>
                     </div>
@@ -190,20 +198,24 @@ export default function SchedulePage() {
                     
                     {/* Top row: Time and Venue */}
                     <div className="flex items-center justify-between gap-4 pl-2">
-                      <span 
-                        className="font-orbitron text-xs font-extrabold text-cyan-400 tracking-wider"
-                        dangerouslySetInnerHTML={{ __html: item.time }}
-                      />
+                      <span className="font-orbitron text-xs font-extrabold text-cyan-400 tracking-wider">
+                        {item.time}
+                      </span>
                       <span 
                         className="font-mono-custom text-[10px] text-cyan-300/80 bg-cyan-950/45 px-2.5 py-1 rounded border border-cyan-500/10 uppercase tracking-wider max-w-[60%] truncate"
                         dangerouslySetInnerHTML={{ __html: item.venue }}
                       />
                     </div>
                     
-                    {/* Event Title */}
+                    {/* Event Title + Subtitle */}
                     <h3 className="font-orbitron text-sm sm:text-base font-black tracking-wider text-slate-100 pl-2 uppercase">
                       {item.event}
                     </h3>
+                    {item.subtitle && (
+                      <p className="font-seaweed text-xs text-cyan-300 pl-2 -mt-1">
+                        {item.subtitle}
+                      </p>
+                    )}
                   </motion.div>
                 ))}
               </AnimatePresence>
