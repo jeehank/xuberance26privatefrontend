@@ -49,7 +49,7 @@ function AnimatedCounter({ target, suffix, duration = 2000 }: AnimatedCounterPro
   return (
     <span
       ref={ref}
-      className="font-orbitron text-2xl sm:text-4xl md:text-7xl font-black bg-clip-text text-transparent bg-gradient-to-b from-white via-cyan-100 to-cyan-400 drop-shadow-[0_0_25px_rgba(0,242,254,0.3)] tabular-nums transition-all"
+      className="font-orbitron text-xl sm:text-4xl md:text-7xl font-black bg-clip-text text-transparent bg-gradient-to-b from-white via-cyan-100 to-cyan-400 drop-shadow-[0_0_25px_rgba(0,242,254,0.3)] tabular-nums transition-all"
     >
       {count}{suffix}
     </span>
@@ -85,7 +85,7 @@ export default function StatsBar() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="flex flex-col items-center justify-center py-6 sm:py-10 md:py-14 px-4 sm:px-8 md:px-12 group"
+                className="flex flex-col items-center justify-center py-8 sm:py-10 md:py-14 px-3 sm:px-8 md:px-12 group"
               >
                 <AnimatedCounter target={stat.value} suffix={stat.suffix} />
                 <span className="font-mono-custom text-[8px] sm:text-xs md:text-sm tracking-[0.1em] sm:tracking-[0.3em] text-cyan-300/70 mt-2 sm:mt-3 text-center">
