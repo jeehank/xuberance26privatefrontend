@@ -90,7 +90,7 @@ export default function EventCard({
         handleMouseLeave();
         setIsHovered(false);
       }}
-      className="glass-card relative p-8 rounded-2xl overflow-hidden flex flex-col justify-between h-[320px] cursor-pointer group"
+      className="glass-card relative p-6 sm:p-8 rounded-2xl overflow-hidden flex flex-col justify-between h-[350px] sm:h-[320px] cursor-pointer group"
     >
       <div
         ref={glareRef}
@@ -117,18 +117,18 @@ export default function EventCard({
 
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-30 group-hover:opacity-100 transition-opacity duration-500 z-10" />
 
-      <div className="relative z-10 pt-2 flex flex-col h-full">
+      <div className="relative z-10 pt-2 flex flex-col h-full justify-between">
         <div className="mb-1">
-          <h3 className="font-orbitron text-xl font-black tracking-wider text-slate-100 group-hover:text-slate-950 transition-colors duration-500">
+          <h3 className="font-orbitron text-base sm:text-xl font-black tracking-wider text-slate-100 group-hover:text-slate-950 transition-colors duration-500 truncate whitespace-nowrap">
             {title}
           </h3>
           {subtitle && (
-            <p className="font-lobster-two text-cyan-300 text-base mt-0.5 group-hover:text-slate-900/90 transition-colors duration-500">
+            <p className="font-lobster-two text-cyan-300 text-sm sm:text-base mt-0.5 group-hover:text-slate-900/90 transition-colors duration-500 truncate whitespace-nowrap">
               {subtitle}
             </p>
           )}
           {tagline && !subtitle && (
-            <p className="font-lobster-two text-cyan-300 text-base mt-0.5 group-hover:text-slate-900/90 transition-colors duration-500">
+            <p className="font-lobster-two text-cyan-300 text-sm sm:text-base mt-0.5 group-hover:text-slate-900/90 transition-colors duration-500 truncate whitespace-nowrap">
               {tagline}
             </p>
           )}
