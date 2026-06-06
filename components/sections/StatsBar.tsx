@@ -11,7 +11,7 @@ interface AnimatedCounterProps {
 
 function AnimatedCounter({ target, suffix, duration = 2000 }: AnimatedCounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: false, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-10px" });
   const [count, setCount] = useState(0);
   const [isGlitching, setIsGlitching] = useState(false);
 
